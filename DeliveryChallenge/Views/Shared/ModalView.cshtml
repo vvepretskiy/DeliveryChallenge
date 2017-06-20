@@ -1,0 +1,17 @@
+﻿<div class="modal fade" data-backdrop="static" data-bind="showModal: $root.editingItem">
+	<div class="modal-dialog" data-bind="with: $root.editingItem">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-bind="click: $root.cancelEdit" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<div data-bind="template: { name: $root.modalTitleTemplate}">
+				</div>
+			</div>
+			<div class="modal-body" data-bind="template: { name: $root.modalBodyTemplate}">
+			</div>
+			<div class="modal-footer">
+				<a href="#" class="btn btn-success kout-save" data-bind="click: $root.applyEdit">Apply</a>
+				<a href="#" class="btn btn-danger kout-cancel" data-bind="click: $root.cancelEdit"> Cancel </a>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,85 @@
+﻿body {
+	padding-top: 50px;
+	padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+	white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+	max-width: 280px;
+}
+
+table.k-grid {
+	padding: 5px;
+}
+
+.table th {
+	background-color: lightgray;
+}
+
+.table .page-info {
+	float: left;
+}
+
+.table .page-navigation {
+	float: right;
+}
+
+.table td {
+	max-width: 150px;
+}
+
+.table td > div {
+	max-height: 50px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.modal .table {
+	font-size: 12px;
+}
+
+.modal .table button{
+	font-size: 12px;
+	padding: 1px 6px;
+}
+
+.modal .table thead > tr > th, 
+.modal .table tbody > tr > th, 
+.modal .table tfoot > tr > th, 
+.modal .table thead > tr > td, 
+.modal .table tbody > tr > td, 
+.modal .table tfoot > tr > td {
+	padding: 4px;
+}
+
+.modal-dialog {
+	width: 800px;
+}
+
+.modal .modal-table tbody > tr > td > table {
+	width: 100%;
+}
+
+.modal .modal-table {
+	width: 100%;
+}
+
+.assign-table tbody > tr > td {
+	width: 50%;
+	vertical-align: top;
+}

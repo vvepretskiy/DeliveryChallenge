@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Challenge Application</title>
+    @Styles.Render("~/Content/css")
+	<script src="@Url.Content("~/Scripts/jquery-1.12.4.min.js")"></script>
+	<script src="@Url.Content("~/Scripts/knockout-3.4.2.js")"></script>
+	<script src="@Url.Content("~/Scripts/knockout.validation.js")"></script>
+	<script src="@Url.Content("~/Scripts/knockout.mapping-latest.js")"></script>
+	<script src="@Url.Content("~/Scripts/Extensions/ko.observable.extension.js")"></script>
+	<script src="@Url.Content("~/Scripts/Extensions/extensions.js")"></script>
+	<script src="@Url.Content("~/Scripts/ViewModels/gridViewModel.js")"></script>
+	<script src="@Url.Content("~/Scripts/Controls/knockout-delegatedEvents.js")"></script>
+	<script src="@Url.Content("~/Scripts/Controls/showModalBinding.js")"></script>
+	<script src="@Url.Content("~/Scripts/jquery-ui-1.12.1.js")"></script>
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+	                <li>@Html.ActionLink("Employees", "Index", "Employee")</li>
+					<li>@Html.ActionLink("Deliveries", "Index", "Delivery")</li>
+					<li>@Html.ActionLink("Skills", "Index", "Skill")</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Challenge Application</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

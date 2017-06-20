@@ -1,0 +1,27 @@
+﻿<p data-bind="visible: enableAddItem()">
+	<button class="btn btn-primary" data-bind="click: addItem">Create</button>
+</p>
+
+<table class="table table-striped table-bordered table-hover">
+	<thead>
+		<tr data-bind="template: { name: tableHeaderTemplate}"></tr>
+	</thead>
+	<tfoot>
+		<tr>
+			<th colspan="30">
+				<div class='page-info'>
+					<span data-bind='text: pagesText'></span>
+				</div>
+				<div class='page-navigation'>
+					<button data-bind='visible: page() > 1, click: pageFirst' class='btn btn-link'>First</button>
+					<button data-bind='visible: page() > 1, click: pageBack' class='btn btn-link'>Previous</button>
+					<button data-bind='visible: page() < totalPages(), click: pageNext' class='btn btn-link'>Next</button>
+					<button data-bind='visible: page() < totalPages(), click: pageLast' class='btn btn-link'>Last</button>
+				</div>
+			</th>
+		</tr>
+	</tfoot>
+	<tbody data-bind="foreach: data, delegatedHandler: 'click'">
+		<tr data-click="editItem" data-bind="template: { name: $parent.tableBodyTemplate}"></tr>
+	</tbody>
+</table>

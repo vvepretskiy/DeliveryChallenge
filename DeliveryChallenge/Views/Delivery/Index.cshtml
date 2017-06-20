@@ -1,0 +1,132 @@
+﻿@{
+	ViewBag.Title = "Deliveries";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Deliveries</h2>
+
+@Html.Partial("GridView")
+@Html.Partial("ModalView")
+
+<script type="text/html" id="tableHeader">
+	<th>
+		Name
+	</th>
+	<th>
+		Type
+	</th>
+	<th>
+		Skills
+	</th>
+	<th>
+		Employees
+	</th>
+	<th />
+</script>
+
+<script type="text/html" id="tableBody">
+	<td>
+		<label data-bind="text: Name"></label>
+	</td>
+	<td>
+		<label data-bind="text: Type() ? Type().Name : ''"></label>
+	</td>
+	<td>
+		<div data-bind="foreach: Skills">
+			<label data-bind="text: Name" style="display: inline-block"></label>,
+		</div>
+	</td>
+	<td>
+		<div data-bind="foreach: Employees">
+			<label data-bind="text: FirstName + ' ' + SecondName" style="display: inline-block"></label>,
+		</div>
+	</td>
+	<td style="width: 70px">
+		<button class="btn btn-danger" data-click="removeItem">Remove</button>
+	</td>
+</script>
+
+<script type="text/html" id="modalBody">
+	<table class="modal-table">
+		<tr>
+			<td>
+				<p>
+					<label>Name: </label>
+					<input data-bind="value: Name" />
+				</p>
+			</td>
+			<td></td>
+			<td>
+				<p>
+					<label>Type: </label>
+					<select data-bind="options: $root.deliveryTypes, optionsText: 'Name', 
+									   value: Type, optionsAfterRender: $root.selectDefaultType"></select>
+				</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<table class="assign-table">
+					<tr>
+						<td data-bind="with: $root.deliverySkillGrid">
+							<label>Delivery skills: </label>
+							@Html.Partial("GridView")
+						</td>
+						<td style="width: 2px"></td>
+						<td data-bind="with: $root.skillGrid">
+							<label>Skills: </label>
+							@Html.Partial("GridView")
+						</td>
+					</tr>
+				</table>
+			</td>
+			<td></td>
+			<td style="display: block">
+				<table class="assign-table">
+					<tr>
+						<td data-bind="with: $root.deliveryEmployeeGrid">
+							<label>Delivery employees: </label>
+							@Html.Partial("GridView")
+						</td>
+						<td style="width: 2px"></td>
+						<td data-bind="with: $root.employeeGrid">
+							<label>Employess: </label>
+							@Html.Partial("GridView")
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+</script>
+
+<script type="text/html" id="skillTableHeader">
+	<th>
+		Name
+	</th>
+</script>
+
+<script type="text/html" id="skillTableBody">
+	<td>
+		<label data-bind="text: Name"></label>
+	</td>
+</script>
+
+<script type="text/html" id="employeeTableHeader">
+	<th>
+		Name
+	</th>
+</script>
+
+<script type="text/html" id="employeeTableBody">
+	<td>
+		<label data-bind="text: FirstName" style="display: inline-block"></label>
+		<label data-bind="text: SecondName" style="display: inline-block"></label>
+	</td>
+</script>
+
+<script type="text/html" id="modalTitle">
+	<h3>Delivery</h3>
+</script>
+
+<script src="@Url.Content("~/Scripts/ViewModels/deliveryViewModel.js")"></script>

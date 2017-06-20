@@ -1,0 +1,130 @@
+﻿@{
+	ViewBag.Title = "Employees";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Employees</h2>
+
+@Html.Partial("GridView")
+@Html.Partial("ModalView")
+
+<script type="text/html" id="tableHeader">
+	<th>
+		FirstName
+	</th>
+	<th>
+		SecondName
+	</th>
+	<th>
+		Skills
+	</th>
+	<th>
+		Deliveries
+	</th>
+	<th/>
+</script>
+
+<script type="text/html" id="tableBody">
+	<td>
+		<label data-bind="text: FirstName"></label>
+	</td>
+	<td>
+		<label data-bind="text: SecondName"></label>
+	</td>
+	<td>
+		<div data-bind="foreach: Skills">
+			<label data-bind="text: Name, visible: EntityState != 8 " style="display: inline-block"></label>,
+		</div>
+	</td>
+	<td>
+		<div data-bind="foreach: Deliveries">
+			<label data-bind="text: Name" style="display: inline-block"></label>,
+		</div>
+	</td>
+	<td style="width: 70px">
+		<button class="btn btn-danger" data-click="removeItem">Remove</button>
+	</td>
+</script>
+
+<script type="text/html" id="modalBody">
+	<table class="modal-table">
+		<tr>
+			<td>
+				<p>
+					<label>FirstName: </label>
+					<input data-bind="value: FirstName"/>
+				</p>
+			</td>
+			<td></td>
+			<td>
+				<p>
+					<label>SecondName: </label>
+					<input data-bind="value: SecondName"/>
+				</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<table class="assign-table">
+					<tr>
+						<td data-bind="with: $root.employeeSkillGrid" >
+							<label>Employee skills: </label>
+							@Html.Partial("GridView")
+						</td>
+						<td style="width: 2px"></td>
+						<td data-bind="with: $root.skillGrid" >
+							<label>Skills: </label>
+							@Html.Partial("GridView")
+						</td>
+					</tr>
+				</table>
+			</td>
+			<td></td>
+			<td style="display: block">
+				<table class="assign-table">
+					<tr>
+						<td data-bind="with: $root.employeeDeliveryGrid">
+							<label>Employee deliveries: </label>
+							@Html.Partial("GridView")
+						</td>
+						<td style="width: 2px"></td>
+						<td data-bind="with: $root.deliveryGrid">
+							<label>Deliveries: </label>
+							@Html.Partial("GridView")
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+</script>
+
+<script type="text/html" id="skillTableHeader">
+	<th>
+		Name
+	</th>
+</script>
+
+<script type="text/html" id="skillTableBody">
+	<td>
+		<label data-bind="text: Name"></label>
+	</td>
+</script>
+
+<script type="text/html" id="deliveryTableHeader">
+	<th>
+		Name
+	</th>
+</script>
+
+<script type="text/html" id="deliveryTableBody">
+	<td>
+		<label data-bind="text: Name"></label>
+	</td>
+</script>
+
+<script type="text/html" id="modalTitle">
+	<h3>Employee</h3>
+</script>
+
+<script src="@Url.Content("~/Scripts/ViewModels/employeeViewModel.js")"></script>

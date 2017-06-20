@@ -1,0 +1,34 @@
+﻿@{
+	ViewBag.Title = "Skills";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Skills</h2>
+
+@Html.Partial("GridView")
+@Html.Partial("ModalView")
+
+<script type="text/html" id="tableHeader">
+	<th>
+		Name
+	</th>
+</script>
+
+<script type="text/html" id="tableBody">
+	<td>
+		<label data-bind="text: Name"></label>
+	</td>
+</script>
+
+<script type="text/html" id="modalBody">
+	<p>
+		<label>Name: </label>
+		<input data-bind="value: Name"/>
+	</p>
+</script>
+
+<script type="text/html" id="modalTitle">
+	<h3>Skill</h3>
+</script>
+
+<script src="@Url.Content("~/Scripts/ViewModels/skillViewModel.js")"></script>
